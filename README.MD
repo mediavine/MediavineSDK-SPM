@@ -1,4 +1,4 @@
-# MediavineSDK-SPM
+# MediavineSDK-SPM   
 
 Swift Package Manager distribution manifest for the Mediavine iOS SDK.
 
@@ -9,7 +9,7 @@ This repository exists solely to satisfy SPM's requirement for a Git-backed pack
 Add the package to your Xcode project or `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/mediavine/MediavineSDK-SPM.git", from: "1.0.0")
+.package(url: "https://github.com/mediavine/MediavineSDK-SPM   .git", from: "1.0.0")
 ```
 
 Resolve a specific version by tag.
