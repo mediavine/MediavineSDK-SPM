@@ -1,0 +1,38 @@
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+### SwiftPackageManager ###
+Package.resolved
+Packages
+.build/
+xcuserdata
+DerivedData/
+*.xcodeproj
+.swiftpm/
+
+
+### Xcode ###
+## User settings
+xcuserdata/
+
+## Xcode 8 and earlier
+*.xcscmblueprint
+*.xccheckout
+
+### Xcode Patch ###
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+/*.gcno
+**/xcshareddata/WorkspaceSettings.xcsettings
+
+### Fastlane ###
+fastlane/
+
+### Env Properties ###
+env.properties
