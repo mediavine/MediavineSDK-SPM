@@ -1,8 +1,8 @@
 // swift-tools-version: 6.1
 import PackageDescription
 
-fileprivate let VERSION = "1.3.6"
-fileprivate let CHECKSUM = "7e83206a4c2ffcb4a84c0966c3b39762256b3621ca4e32ad88d7eb8df370066f"
+fileprivate let VERSION = "1.4.0"
+fileprivate let CHECKSUM = "27c14eb2edc0fdb65b8f39c1ab75f62cc658ae0d858c663f72616727bc25c26c"
 
 let package = Package(
     name: "Mediavine",
