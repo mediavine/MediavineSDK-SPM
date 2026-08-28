@@ -4,10 +4,10 @@ import PackageDescription
 // Rendered by the mvsdk-ios release pipeline (fastlane publish_spm) into the
 // MediavineSDK-SPM repository. Do not edit Package.swift there — change THIS
 // template (and the dependency lists below) in mvsdk-ios, and the next tagged
-// release deploys it. 1.5.0 and e624677480a30fe9813b4e3cd5c64c78ad535e6e3aa6ae235acf98c18ce3446c are stamped at publish time.
+// release deploys it. 1.5.1 and fd5450293019b20f8051f71b73027bf34b17d06e422cfbafa2ca4ad25a22f226 are stamped at publish time.
 
-fileprivate let VERSION = "1.5.0"
-fileprivate let CHECKSUM = "e624677480a30fe9813b4e3cd5c64c78ad535e6e3aa6ae235acf98c18ce3446c"
+fileprivate let VERSION = "1.5.1"
+fileprivate let CHECKSUM = "fd5450293019b20f8051f71b73027bf34b17d06e422cfbafa2ca4ad25a22f226"
 
 let package = Package(
     name: "Mediavine",
