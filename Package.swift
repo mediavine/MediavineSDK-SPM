@@ -4,15 +4,20 @@ import PackageDescription
 // Rendered by the mvsdk-ios release pipeline (fastlane publish_spm) into the
 // MediavineSDK-SPM repository. Do not edit Package.swift there — change THIS
 // template (and the dependency lists below) in mvsdk-ios, and the next tagged
-// release deploys it. 1.6.0 and 08d89679f4576ec486d7cea669e0ff1ce57dd2fc9869863696a6562c10e27508 are stamped at publish time.
+// release deploys it. 1.6.2 and d139c37a1d5c09879d405d1c65f704898f2c8071c6412e3fb50fe72c93f44ad7 are stamped at publish time.
 
-fileprivate let VERSION = "1.6.0"
-fileprivate let CHECKSUM = "08d89679f4576ec486d7cea669e0ff1ce57dd2fc9869863696a6562c10e27508"
+fileprivate let VERSION = "1.6.2"
+fileprivate let CHECKSUM = "d139c37a1d5c09879d405d1c65f704898f2c8071c6412e3fb50fe72c93f44ad7"
 
 let package = Package(
     name: "Mediavine",
     platforms: [
-        .iOS(.v13)
+        // Must track `spec.platform` in Mediavine.podspec and the framework's
+        // IPHONEOS_DEPLOYMENT_TARGET. SPM validates a consumer's deployment target
+        // against THIS value, not against the binary inside, so a stale floor here
+        // lets an app below the real minimum resolve the package cleanly and then
+        // fail at build/link time with an unrelated-looking error.
+        .iOS(.v16)
     ],
     products: [
         .library(
