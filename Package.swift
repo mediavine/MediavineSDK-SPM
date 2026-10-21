@@ -4,10 +4,10 @@ import PackageDescription
 // Rendered by the mvsdk-ios release pipeline (fastlane publish_spm) into the
 // MediavineSDK-SPM repository. Do not edit Package.swift there — change THIS
 // template (and the dependency lists below) in mvsdk-ios, and the next tagged
-// release deploys it. 2.0.0 and 0c6108731e6c6c7f69cd4d7e08d2f6cd02ddc40d06757415e3784619eae6471b are stamped at publish time.
+// release deploys it. 2.0.1 and 41a4257163ca208abd252ed7f33aea3660e6d20a67c4bd7fb334484e73dc81dd are stamped at publish time.
 
-fileprivate let VERSION = "2.0.0"
-fileprivate let CHECKSUM = "0c6108731e6c6c7f69cd4d7e08d2f6cd02ddc40d06757415e3784619eae6471b"
+fileprivate let VERSION = "2.0.1"
+fileprivate let CHECKSUM = "41a4257163ca208abd252ed7f33aea3660e6d20a67c4bd7fb334484e73dc81dd"
 
 let package = Package(
     name: "Mediavine",
@@ -26,12 +26,16 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/Optable/optable-ios-sdk.git", .upToNextMajor(from: "1.0.1")),
         .package(url: "https://github.com/iubenda/cm-sdk-xcframework-v3.git", .upToNextMajor(from: "3.8.0")),
-        .package(url: "https://github.com/googleads/swift-package-manager-google-mobile-ads.git", .upToNextMajor(from: "13.0.0")),
-        // The UID2 stack ships INSIDE the Mediavine binary (statically absorbed, like
-        // OptableSDK). Do NOT add the uid2 packages here — a second copy duplicates
-        // UID2Manager and splits the seeded singleton from GMA's collector.
+        // Google Mobile Ads (with UMP), OptableSDK and the UID2 stack ship INSIDE the
+        // Mediavine binary (statically absorbed: GoogleMobileAds imported internal,
+        // OptableSDK and UID2 imported @_implementationOnly, UMP and UID2GMAPlugin
+        // linked only; none of them in the public interface). GMA's and UMP's privacy
+        // manifests ship inside Mediavine.framework.
+        // Do NOT add their packages here. A second copy links into the app executable
+        // alongside Mediavine's: the runtime warns "Class … is implemented in both" on
+        // every launch, two versions of the same classes coexist, and for UID2 the
+        // seeded UID2Manager singleton splits from GMA's collector.
     ],
     targets: [
         .binaryTarget(
@@ -43,8 +47,6 @@ let package = Package(
             name: "MediavineWrapper",
             dependencies: [
                 .byName(name: "Mediavine_Binary"),
-                .product(name: "OptableSDK", package: "optable-ios-sdk"),
-                .product(name: "GoogleMobileAds", package: "swift-package-manager-google-mobile-ads"),
                 .product(name: "cm-sdk-ios-v3", package: "cm-sdk-xcframework-v3")
             ],
             path: "Sources/Mediavine"
