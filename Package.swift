@@ -4,19 +4,21 @@ import PackageDescription
 // Rendered by the mvsdk-ios release pipeline (fastlane publish_spm) into the
 // MediavineSDK-SPM repository. Do not edit Package.swift there — change THIS
 // template (and the dependency lists below) in mvsdk-ios, and the next tagged
-// release deploys it. 2.1.0 and aca90d85d51e4533ffa20305b7af77f266afd594a6430296198acff8c45290e5 are stamped at publish time.
+// release deploys it. 2.2.0 and 045061edbeed90d9c04568c9bf2111aec7aaaac96479523e2d5485430af0d1a1 are stamped at publish time.
 
-fileprivate let VERSION = "2.1.0"
-fileprivate let CHECKSUM = "aca90d85d51e4533ffa20305b7af77f266afd594a6430296198acff8c45290e5"
+fileprivate let VERSION = "2.2.0"
+fileprivate let CHECKSUM = "045061edbeed90d9c04568c9bf2111aec7aaaac96479523e2d5485430af0d1a1"
 
 let package = Package(
     name: "Mediavine",
     platforms: [
-        // Must track `spec.platform` in Mediavine.podspec and the framework's
-        // IPHONEOS_DEPLOYMENT_TARGET. SPM validates a consumer's deployment target
-        // against THIS value, not against the binary inside, so a stale floor here
-        // lets an app below the real minimum resolve the package cleanly and then
-        // fail at build/link time with an unrelated-looking error.
+        // The source of truth for the iOS floor: the framework's
+        // IPHONEOS_DEPLOYMENT_TARGET and the Podfile must match it, which
+        // scripts/check-deployment-floor.py enforces before every release. SPM
+        // validates a consumer's deployment target against THIS value, not against
+        // the binary inside, so a stale floor here lets an app below the real minimum
+        // resolve the package cleanly and then fail at build/link time with an
+        // unrelated-looking error.
         .iOS(.v16)
     ],
     products: [
